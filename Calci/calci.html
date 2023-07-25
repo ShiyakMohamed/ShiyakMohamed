@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <script>
+    function calculate(operation) {
+      var num1 = parseFloat(document.getElementById('number1').value);
+      var num2 = parseFloat(document.getElementById('number2').value);
+      var result;
+
+      if (isNaN(num1) || isNaN(num2)) {
+        alert('Please enter valid numbers');
+        return;
+      }
+
+      switch (operation) {
+        case 'add':
+          result = num1 + num2;
+          break;
+        case 'subtract':
+          result = num1 - num2;
+          break;
+        case 'multiply':
+          result = num1 * num2;
+          break;
+        case 'divide':
+          if (num2 === 0) {
+            alert('Cannot divide by zero');
+            return;
+          }
+          result = num1 / num2;
+          break;
+        default:
+          alert('Invalid operation');
+          return;
+      }
+
+      document.getElementById('result').innerHTML = 'Result: ' + result;
+    }
+    
+    function clearFields() {
+      document.getElementById('number1').value = '';
+      document.getElementById('number2').value = '';
+      document.getElementById('result').innerHTML = '';
+    }
+  </script>
+</head>
+<body>
+  <h1>Calculator</h1>
+  
+  <input type="text" id="number1" placeholder="Enter the first number"><br>
+  <input type="text" id="number2" placeholder="Enter the second number"><br>
+  <output type="text" id="Result" placeholder="Total"></output><br>
+  <br>
+  
+  <button onclick="calculate('add')">Add</button><br><br>
+  <button onclick="calculate('subtract')">Subtract</button><br><br>
+  <button onclick="calculate('multiply')">Multiply</button><br><br>
+  <button onclick="calculate('divide')">Divide</button><br><br>
+  <button onclick="clearFields()">Clear</button>
+
+  <p id="result"></p>
+</body>
+</html>
